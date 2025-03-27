@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disaster Response Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+ <div id="nameTag">
+  <h2 id="name"></h2>
+</div>
+<button type="submit" id="goToMap">Go To Map</button>
+ <div id="input-section">
+  <label for="message" class="message1">Where Are You Stuck?</label><br>
+  <textarea id="message" rows="4" cols="50" placeholder="e.g. 'Help! I'm trapped in a flood'"></textarea><br><br>
+  <button onclick="submitMessage()">Classify & Map</button>
+</div>
+   <a id="home"><img src="../src/delete.png" class="cross"/></a>
+   <div id="loadingMessage">
+    <div class="spinner"></div>
+    <p>Fetching Location...</p>
+</div>
+  <div id="map"></div>
+
+
+ 
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="./script.js">
+    
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const user = JSON.parse(localStorage.getItem("username"));
+        if (!user) {
+            window.location.href = "login.html";
+        } else {
+            document.getElementById("name").innerText = `WELCOME ${user}`
+        }
+    });
+</script>
+
+</body>
+</html>
